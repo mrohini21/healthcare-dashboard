@@ -1,71 +1,57 @@
-# CareBoard — Healthcare Dashboard
+# Tech.Care — Healthcare Dashboard
 
-A responsive patient dashboard built with **HTML, CSS, JavaScript and Chart.js**. It retrieves sample patient records from an external API and displays patient profiles, diagnosis history, vital signs and diagnostic entries.
+A responsive patient dashboard built with **HTML5, CSS3, vanilla JavaScript and Chart.js**. The interface presents patient profile information, diagnosis history, vital signs and a diagnostic list in a clean dashboard layout.
 
-> **Important:** This is a portfolio/demo project using sample records. It is not a medical device or a clinical decision-support system. Do not use it for real patient care or enter real patient information.
+## Dashboard preview
+
+![Tech.Care healthcare dashboard preview](screenshots/dashboard-preview.png)
 
 ## Features
 
-- Fetches patient records from an external REST API.
-- Searchable patient directory with interactive patient selection.
-- Patient profile with demographic and contact details.
-- Blood pressure history visualised with Chart.js.
-- Latest respiratory rate, temperature and heart-rate readings.
-- Diagnostic list rendered safely using DOM text properties.
-- Loading, empty and error states for API requests.
-- Responsive layout for desktop, tablet and mobile.
-- Patient details dialog with accessible controls.
+- Patient profile details and contact information
+- Blood pressure history visualised with Chart.js
+- Respiratory rate, temperature and heart-rate cards
+- Diagnostic list with problem, description and status
+- Responsive layout for desktop, tablet and mobile screens
+- API loading and error messaging
 
-## Tech Stack
+## Tech stack
 
-| Technology | Usage |
-|---|---|
-| HTML5 | Semantic page structure |
-| CSS3 | Responsive layout and visual styling |
-| JavaScript (ES6+) | API requests, state and DOM updates |
-| Chart.js | Blood pressure trend visualisation |
-| Fetch API | External patient-data integration |
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Chart.js
 
-## Project Structure
+## Run locally
 
-```text
+1. Clone or download this repository.
+2. Open the project folder in Visual Studio Code.
+3. Install the **Live Server** extension.
+4. Copy `config.example.js` and rename the copy to `config.js`.
+5. Add the API URL and credentials that you are authorised to use in your local `config.js`.
+6. Open `index.html` with Live Server.
+
+The project uses Chart.js from a CDN, so an internet connection is required.
+
+## API credentials and security
+
+The real `config.js` file is intentionally excluded from version control. Never publish API usernames, passwords, access tokens or other secrets in a public repository. For production use, authenticated API requests should be handled by a secure backend rather than exposing credentials in browser-side JavaScript.
+
+## Project structure
+
+```
 healthcare-dashboard/
-├── healthcare/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-├── .gitignore
+├── index.html
+├── style.css
+├── script.js
+├── package.json
+├── tsconfig.json
 ├── config.example.js
-└── README.md
+├── .gitignore
+└── screenshots/
+    └── dashboard-preview.png
 ```
 
-## Run Locally
+## Note
 
-1. Clone the repository.
-   ```bash
-   git clone https://github.com/mrohini21/healthcare-dashboard.git
-   cd healthcare-dashboard
-   ```
-2. Create a local `healthcare/config.js` file by copying `config.example.js`.
-3. Add the API URL and credentials supplied for your API environment to `healthcare/config.js`.
-4. Open `healthcare/index.html` with a local development server (for example, VS Code Live Server).
-5. Confirm the API permits browser requests from your local origin (CORS).
-
-The local `healthcare/config.js` file is ignored by Git. The example file contains placeholders only.
-
-### API and credential security
-
-This is a browser-only demo. Any credential placed in a frontend JavaScript file can be inspected by visitors, even if the file is excluded from Git. Use only public/demo credentials with no sensitive access. For a production application, move authentication and API requests to a backend service and keep secrets on the server.
-
-## Implementation Notes
-
-- API responses are checked for HTTP errors and expected array data.
-- Patient information is inserted with `textContent` or DOM element creation rather than interpolated HTML.
-- The chart is destroyed before a new patient's data is rendered to prevent duplicate chart instances.
-- Missing fields are handled with readable fallback values.
-
-## Author
-
-**M. Rohini**
-
-[GitHub](https://github.com/mrohini21) · [LinkedIn](https://www.linkedin.com/in/m-rohini-54a0a4206/)
+This repository is a portfolio/demo project. Use only authorised test data and API access.
