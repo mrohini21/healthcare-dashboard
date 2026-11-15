@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f7fa" />
+  <title>Tech.Care | Healthcare Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="config.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo">Tech.Care</div>
+    <nav aria-label="Main navigation">
+      <a href="#">Overview</a>
+      <a class="active" href="#" aria-current="page">Patients</a>
+      <a href="#">Schedule</a>
+      <a href="#">Message</a>
+      <a href="#">Transactions</a>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <section class="left-panel">
+      <div class="panel-title"><h2>Patients</h2></div>
+      <ul class="patient-list" aria-label="Patients">
+        <li class="selected">Jessica Taylor</li>
+        <li>Ryan Johnson</li>
+        <li>Emily Williams</li>
+        <li>Samantha Johnson</li>
+        <li>Ashley Martinez</li>
+      </ul>
+    </section>
+
+    <section class="center-panel" aria-label="Patient diagnosis and vital signs">
+      <div class="card chart-card">
+        <div class="card-header"><h2>Diagnosis History</h2></div>
+        <div class="chart-wrap"><canvas id="bloodPressureChart" aria-label="Blood pressure history chart"></canvas></div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-box blue">
+          <h3>Respiratory Rate</h3>
+          <p id="respRate">--</p>
+          <span id="respStatus">Normal</span>
+        </article>
+        <article class="stat-box pink">
+          <h3>Temperature</h3>
+          <p id="temp">--</p>
+          <span id="tempStatus">Normal</span>
+        </article>
+        <article class="stat-box purple">
+          <h3>Heart Rate</h3>
+          <p id="heartRate">--</p>
+          <span id="heartStatus">Lower than Average</span>
+        </article>
+      </div>
+
+      <div class="card table-card">
+        <h2>Diagnostic List</h2>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th>Problem</th><th>Description</th><th>Status</th></tr></thead>
+            <tbody id="diagnosisTable"></tbody>
+          </table>
+        </div>
+      </div>
+      <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <aside class="right-panel card" aria-label="Patient profile">
+      <img id="avatar" class="avatar" src="" alt="Patient profile" />
+      <h2 id="fullName"></h2>
+      <div class="info-group"><p><strong>Date Of Birth:</strong></p><span id="birthDate"></span></div>
+      <div class="info-group"><p><strong>Gender:</strong></p><span id="gender"></span></div>
+      <div class="info-group"><p><strong>Phone:</strong></p><span id="phone"></span></div>
+      <div class="info-group"><p><strong>Emergency Contact:</strong></p><span id="emergency"></span></div>
+      <div class="info-group"><p><strong>Insurance:</strong></p><span id="insurance"></span></div>
+      <button class="details-btn" type="button" id="detailsBtn">Show All Information</button>
+      <div id="allInformation" class="all-information" hidden></div>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
