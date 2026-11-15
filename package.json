@@ -1,0 +1,6 @@
+{
+  "name": "careboard-healthcare-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Responsive patient dashboard built with vanilla JavaScript and Chart.js"
+}
