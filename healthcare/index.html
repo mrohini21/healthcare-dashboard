@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A responsive healthcare dashboard for exploring patient profiles, diagnosis history and vital signs.">
+  <meta name="theme-color" content="#f6f7fb">
+  <title>CareBoard | Patient Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js" defer></script>
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="CareBoard home"><span class="brand-mark">+</span> care<span>board</span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#overview">Overview</a><a class="active" href="#patients" aria-current="page">Patients</a><a href="#diagnostics">Diagnostics</a>
+    </nav>
+    <div class="topbar-note"><span class="status-dot"></span> Clinical workspace</div>
+  </header>
+
+  <main class="page-shell" id="overview">
+    <div class="page-heading">
+      <div><p class="eyebrow">PATIENT OVERVIEW</p><h1>Healthcare dashboard</h1><p class="subheading">A clear view of patient history, vital signs and diagnostics.</p></div>
+      <div class="updated-label" id="updatedLabel">Waiting for patient data</div>
+    </div>
+
+    <div class="notice" id="appStatus" role="status" aria-live="polite">
+      <span class="loader" aria-hidden="true"></span><span>Connecting to patient records…</span>
+    </div>
+
+    <div class="dashboard-grid">
+      <aside class="panel patients-panel" id="patients">
+        <div class="panel-heading"><div><p class="eyebrow">DIRECTORY</p><h2>Patients</h2></div><span class="count-pill" id="patientCount">—</span></div>
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="patientSearch" type="search" placeholder="Search patients" autocomplete="off" aria-label="Search patients"></label>
+        <ul class="patient-list" id="patientList" aria-label="Patient list"><li class="empty-state">Patient records will appear here.</li></ul>
+      </aside>
+
+      <section class="main-column">
+        <section class="panel history-panel" id="diagnostics">
+          <div class="panel-heading"><div><p class="eyebrow">PATIENT TRENDS</p><h2>Diagnosis history</h2></div><span class="legend"><i class="legend-dot systolic"></i>Systolic <i class="legend-dot diastolic"></i>Diastolic</span></div>
+          <div class="chart-wrap"><canvas id="bloodPressureChart" role="img" aria-label="Blood pressure history chart"></canvas><p class="chart-fallback" id="chartFallback">Chart will appear when patient data is available.</p></div>
+        </section>
+
+        <section class="vitals-grid" aria-label="Latest vital signs">
+          <article class="vital-card respiratory"><div class="vital-icon">↗</div><p class="vital-label">Respiratory rate</p><p class="vital-value" id="respRate">—</p><p class="vital-status" id="respStatus">Latest reading</p></article>
+          <article class="vital-card temperature"><div class="vital-icon">♨</div><p class="vital-label">Temperature</p><p class="vital-value" id="temp">—</p><p class="vital-status" id="tempStatus">Latest reading</p></article>
+          <article class="vital-card heart"><div class="vital-icon">♡</div><p class="vital-label">Heart rate</p><p class="vital-value" id="heartRate">—</p><p class="vital-status" id="heartStatus">Latest reading</p></article>
+        </section>
+
+        <section class="panel diagnostics-panel">
+          <div class="panel-heading"><div><p class="eyebrow">CLINICAL NOTES</p><h2>Diagnostic list</h2></div></div>
+          <div class="table-scroll"><table><thead><tr><th scope="col">Condition</th><th scope="col">Description</th><th scope="col">Status</th></tr></thead><tbody id="diagnosisTable"><tr><td colspan="3" class="empty-state">Select a patient to view diagnostic records.</td></tr></tbody></table></div>
+        </section>
+      </section>
+
+      <aside class="panel profile-panel">
+        <div class="profile-top"><p class="eyebrow">PATIENT PROFILE</p><span class="profile-badge">Record</span></div>
+        <div class="profile-identity"><img id="avatar" class="avatar" src="https://placehold.co/112x112/e8eef5/667085?text=PT" alt="Patient profile" referrerpolicy="no-referrer"><h2 id="fullName">Select a patient</h2><p id="profileSubtitle">Patient details will appear here</p></div>
+        <div class="profile-divider"></div>
+        <div class="info-list">
+          <div class="info-row"><span class="info-icon">▦</span><div><span class="info-label">Date of birth</span><strong id="birthDate">—</strong></div></div>
+          <div class="info-row"><span class="info-icon">◉</span><div><span class="info-label">Gender</span><strong id="gender">—</strong></div></div>
+          <div class="info-row"><span class="info-icon">⌕</span><div><span class="info-label">Phone</span><strong id="phone">—</strong></div></div>
+          <div class="info-row"><span class="info-icon">♡</span><div><span class="info-label">Emergency contact</span><strong id="emergency">—</strong></div></div>
+          <div class="info-row"><span class="info-icon">▤</span><div><span class="info-label">Insurance</span><strong id="insurance">—</strong></div></div>
+        </div>
+        <button class="details-btn" id="detailsButton" type="button" disabled>Show all information <span aria-hidden="true">↗</span></button>
+      </aside>
+    </div>
+    <footer>CareBoard <span>·</span> Demo interface using sample patient records. Not for clinical use.</footer>
+  </main>
+
+  <dialog class="details-dialog" id="detailsDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-heading"><div><p class="eyebrow">PATIENT RECORD</p><h2 id="dialogTitle">Patient information</h2></div><button class="icon-button" id="closeDialog" type="button" aria-label="Close dialog">×</button></div>
+    <div id="additionalInfo" class="additional-info"></div>
+  </dialog>
+</body>
+</html>
