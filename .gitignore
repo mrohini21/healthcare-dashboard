@@ -1,0 +1,6 @@
+# Local API credentials
+healthcare/config.js
+
+# OS / editor files
+.DS_Store
+.vscode/
