@@ -4,7 +4,9 @@ A responsive patient dashboard built with **HTML5, CSS3, vanilla JavaScript and 
 
 ## Dashboard preview
 
-The dashboard screenshot will be added at `screenshots/dashboard-preview.png`.
+![Tech.Care healthcare dashboard](dashboard_index.png)
+
+*Preview of the completed dashboard interface.*
 
 ## Features
 
@@ -48,8 +50,7 @@ healthcare-dashboard/
 ├── tsconfig.json
 ├── config.example.js
 ├── .gitignore
-└── screenshots/
-    └── dashboard-preview.png
+└── dashboard_index.png
 ```
 
 ## Note
