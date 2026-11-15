@@ -1,6 +1,7 @@
 # Local API credentials
-healthcare/config.js
+config.js
 
-# OS / editor files
+# OS/editor files
 .DS_Store
+Thumbs.db
 .vscode/
